@@ -1,19 +1,13 @@
 import Branding from "@/components/Branding";
 import ContentBlock from "@/components/ContentBlock";
+import PetButton from "@/components/PetButton";
 import PetDetails from "@/components/PetDetails";
 import PetList from "@/components/PetList";
 import SearchForm from "@/components/SearchForm";
 import Stats from "@/components/Stats";
 
-export default async function Dashboard() {
 
-    const response = await fetch('https://bytegrad.com/course-assets/projects/petsoft/api/pets');
-
-    if (!response.ok) throw new Error('Could not fetch pets');
-
-    const data = await response.json();
-    // console.log(data);
-
+export default function Dashboard() {
     return (
         <main>
             <div className="flex justify-between items-center text-white py-8">
@@ -26,9 +20,12 @@ export default async function Dashboard() {
                     <SearchForm />
                 </div>
 
-                <div className="md:row-start-2 md:row-span-full md:col-start-1 md:col-span-1">
+                <div className="md:row-start-2 md:row-span-full md:col-start-1 md:col-span-1 relative">
                     <ContentBlock>
-                        <PetList pets={data} />
+                        <PetList />
+                        <div className="absolute bottom-4 right-4">
+                            <PetButton actionType="add" />
+                        </div>
                     </ContentBlock>
                 </div>
 

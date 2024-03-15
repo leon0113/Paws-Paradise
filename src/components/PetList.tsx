@@ -1,12 +1,24 @@
+'use client'
 import Image from "next/image";
+import { usePetContext, useSearchContext } from "@/lib/hooks";
+import { cn } from "@/lib/utils";
 
-export default function PetList({ pets }: { pets: any }) {
+
+
+export default function PetList() {
+
+    const { pets, handleChangePetId, selectedPetId } = usePetContext();
+    const { searchText } = useSearchContext();
+
+    const filteredPets = pets.filter((pet) => pet.name.toLowerCase().includes(searchText));
+
     return (
         <ul className="bg-white border-b border-black/[0.08]">
             {
-                pets.map((pet: any) => (
+                filteredPets.map((pet: any) => (
                     <li key={pet.id}>
-                        <button className="flex h-[70px] w-full cursor-pointer items-center px-5 text-base gap-3 hover:bg-[#EFF1F2] focus:bg-[#EFF1F2] transition">
+                        <button onClick={() => handleChangePetId(pet.id)}
+                            className={cn("flex h-[70px] w-full cursor-pointer items-center px-5 text-base gap-3 hover:bg-[#EFF1F2] focus:bg-[#EFF1F2] transition", { 'hover:bg-[#EFF1F2]': selectedPetId === pet.id })}>
                             {/* <div className="overflow-hidden"> */}
                             <Image
                                 src={pet.imageUrl}
