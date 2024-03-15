@@ -16,14 +16,19 @@ export default function PetContextProvider({ data, children }: PetContextProvide
     //event handler/actions
     const handleChangePetId = (id: string) => {
         setSelectedPetId(id);
-    }
+    };
+    const handleCheckoutPet = (id: string) => {
+        setPets(prev => prev.filter(pet => pet.id !== id));
+        setSelectedPetId(null);
+    };
 
     return (
         <PetContext.Provider value={{
             pets,
             selectedPetId,
             handleChangePetId,
-            selectedPet
+            selectedPet,
+            handleCheckoutPet
         }}>
             {children}
         </PetContext.Provider>

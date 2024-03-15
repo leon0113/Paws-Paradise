@@ -6,7 +6,7 @@ import PetButton from "./PetButton";
 
 export default function PetDetails() {
 
-    const { selectedPet } = usePetContext();
+    const { selectedPet, handleCheckoutPet } = usePetContext();
 
     return (
         <section className="flex flex-col h-full w-full">
@@ -28,7 +28,7 @@ export default function PetDetails() {
                             </>
                             <div className="flex items-center gap-5 ml-auto">
                                 <PetButton actionType='edit' />
-                                <PetButton actionType='delete' />
+                                <PetButton actionType='delete' onClick={() => handleCheckoutPet(selectedPet.id)} />
                             </div>
                         </div>
 

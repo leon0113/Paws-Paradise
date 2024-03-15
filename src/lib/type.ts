@@ -23,6 +23,7 @@ export type PetContextProps = {
     // setPets:
     selectedPetId: string | null,
     handleChangePetId: (id: string) => void,
+    handleCheckoutPet: (id: string) => void,
     selectedPet: Pet | undefined
 }
 
@@ -32,5 +33,6 @@ export type SearchContextProps = {
 }
 
 export type PetButtonProps = {
-    actionType: "add" | "edit" | "delete"
+    actionType: "add" | "edit" | "delete";
+    onClick?: () => void;
 }

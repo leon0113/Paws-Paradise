@@ -2,7 +2,7 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { Button } from "./ui/button";
 import { PetButtonProps } from "@/lib/type";
 
-export default function PetButton({ actionType }: PetButtonProps) {
+export default function PetButton({ actionType, onClick }: PetButtonProps) {
     if (actionType === "add") {
         return (
             <Button size="icon">
@@ -19,7 +19,7 @@ export default function PetButton({ actionType }: PetButtonProps) {
     }
     if (actionType === "delete") {
         return (
-            <Button variant={"secondary"}>
+            <Button variant={"secondary"} onClick={onClick}>
                 Checkout
             </Button>
         )
