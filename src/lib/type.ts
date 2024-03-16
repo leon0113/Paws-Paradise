@@ -25,6 +25,7 @@ export type PetContextProps = {
     handleChangePetId: (id: string) => void,
     handleCheckoutPet: (id: string) => void,
     handleAddPet: (newPet: Omit<Pet, 'id'>) => void,
+    handleEditPet: (id: string, newPet: Omit<Pet, 'id'>) => void,
     selectedPet: Pet | undefined
 }
 

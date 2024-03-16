@@ -30,7 +30,7 @@ export default function PetButton({ actionType, onClick }: PetButtonProps) {
     }
     if (actionType === "edit") {
         return (
-            <Dialog>
+            <Dialog open={isFormOpen} onOpenChange={setIsFormOpen}>
                 <DialogTrigger asChild>
                     <Button variant={"secondary"}>
                         Edit

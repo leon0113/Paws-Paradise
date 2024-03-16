@@ -28,6 +28,19 @@ export default function PetContextProvider({ data, children }: PetContextProvide
             ...newPet,
         }])
     };
+    const handleEditPet = (petId: string, petData: Omit<Pet, 'id'>) => {
+        setPets((prev) =>
+            prev.map((pet) => {
+                if (pet.id === petId) {
+                    return {
+                        id: petId,
+                        ...petData
+
+                    }
+                }
+                return pet;
+            }))
+    };
 
     return (
         <PetContext.Provider value={{
@@ -36,7 +49,8 @@ export default function PetContextProvider({ data, children }: PetContextProvide
             handleChangePetId,
             selectedPet,
             handleCheckoutPet,
-            handleAddPet
+            handleAddPet,
+            handleEditPet
         }}>
             {children}
         </PetContext.Provider>
