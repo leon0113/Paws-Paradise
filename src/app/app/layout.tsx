@@ -1,6 +1,7 @@
 import AppFooter from "@/components/AppFooter";
 import AppHeader from "@/components/AppHeader";
 import BackGroundPattern from "@/components/BackGroundPattern";
+import { Toaster } from "@/components/ui/sonner";
 import PetContextProvider from "@/contexts/PetContextProvider";
 import SearchContextProvider from "@/contexts/SearchContextProvider";
 import prisma from "@/lib/db";
@@ -32,6 +33,7 @@ export default async function layout({ children }: { children: ReactNode }) {
 
                 <AppFooter />
             </div>
+            <Toaster position="top-center" />
         </>
     )
 }

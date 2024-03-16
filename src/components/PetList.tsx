@@ -13,10 +13,10 @@ export default function PetList() {
     const filteredPets = pets.filter((pet) => pet.name.toLowerCase().includes(searchText));
 
     return (
-        <ul className="bg-white border-b border-black/[0.08]">
+        <ul className="bg-white border-b border-black/[0.08] max-h-[550px] overflow-y-auto">
             {
                 filteredPets.map((pet: any) => (
-                    <li key={pet.id}>
+                    <li key={Math.random()}>
                         <button onClick={() => handleChangePetId(pet.id)}
                             className={cn("flex h-[70px] w-full cursor-pointer items-center px-5 text-base gap-3 hover:bg-[#EFF1F2] focus:bg-[#EFF1F2] transition", { 'hover:bg-[#EFF1F2]': selectedPetId === pet.id })}>
                             {/* <div className="overflow-hidden"> */}

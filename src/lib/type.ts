@@ -23,7 +23,7 @@ export type PetContextProps = {
     // setPets:
     selectedPetId: string | null,
     handleChangePetId: (id: string) => void,
-    handleCheckoutPet: (id: string) => void,
+    handleCheckoutPet: (id: string) => Promise<void>,
     handleAddPet: (newPet: Omit<Pet, 'id'>) => void,
     handleEditPet: (id: string, newPet: Omit<Pet, 'id'>) => void,
     selectedPet: Pet | undefined
@@ -37,4 +37,5 @@ export type SearchContextProps = {
 export type PetButtonProps = {
     actionType: "add" | "edit" | "delete";
     onClick?: () => void;
+    disable?: boolean
 }

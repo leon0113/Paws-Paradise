@@ -5,8 +5,9 @@ import { PetButtonProps } from "@/lib/type";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import PetForm from "./PetForm";
 import { useState } from "react";
+import { flushSync } from "react-dom";
 
-export default function PetButton({ actionType, onClick }: PetButtonProps) {
+export default function PetButton({ actionType, onClick, disable }: PetButtonProps) {
 
     const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -22,7 +23,11 @@ export default function PetButton({ actionType, onClick }: PetButtonProps) {
                     <DialogHeader>
                         <DialogTitle>Add a new pet</DialogTitle>
                     </DialogHeader>
-                    <PetForm actionType={actionType} onFormSubmission={() => setIsFormOpen(false)} />
+                    <PetForm actionType={actionType} onFormSubmission={() => {
+                        flushSync(() => {
+                            setIsFormOpen(false);
+                        });
+                    }} />
                     <DialogFooter></DialogFooter>
                 </DialogContent>
             </Dialog>
@@ -48,8 +53,10 @@ export default function PetButton({ actionType, onClick }: PetButtonProps) {
     }
     if (actionType === "delete") {
         return (
-            <Button variant={"secondary"} onClick={onClick}>
-                Checkout
+            <Button variant={"secondary"} disabled={disable} onClick={onClick}>
+                {
+                    disable ? "Deleting" : "Checkout"
+                }
             </Button>
         )
     }

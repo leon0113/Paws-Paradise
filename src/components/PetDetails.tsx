@@ -1,12 +1,15 @@
 'use client'
 import { usePetContext } from "@/lib/hooks";
+import { deletePet } from "@/server/actions";
 import Image from "next/image";
 import EmptyView from '../components/EmptyView';
 import PetButton from "./PetButton";
+import { useTransition } from "react";
 
 export default function PetDetails() {
 
     const { selectedPet, handleCheckoutPet } = usePetContext();
+    const [isPending, startTransition] = useTransition();
 
     return (
         <section className="flex flex-col h-full w-full">
@@ -28,7 +31,8 @@ export default function PetDetails() {
                             </>
                             <div className="flex items-center gap-5 ml-auto">
                                 <PetButton actionType='edit' />
-                                <PetButton actionType='delete' onClick={() => handleCheckoutPet(selectedPet.id)} />
+                                <PetButton actionType='delete' disable={isPending}
+                                    onClick={async () => await handleCheckoutPet(selectedPet?.id)} />
                             </div>
                         </div>
 
