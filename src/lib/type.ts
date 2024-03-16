@@ -1,18 +1,21 @@
 import { ReactNode } from "react";
+import { Pet } from "@prisma/client";
 
-export type Pet = {
-    id: string;
-    name: string;
-    ownerName: string;
-    imageUrl: string;
-    age: number;
-    notes: string
-}
+export type PetNew = Omit<Pet, 'id' | 'updatedAt' | 'createdAt'>
 
 export type PetContextProviderProps = {
     data: Pet[];
     children: ReactNode
 }
+
+// export type PetForm = {
+//     name: string,
+//     ownerName: string,
+//     imageUrl: string,
+//     age: string,
+//     notes: string
+// }
+
 
 export type SearchContextProviderProps = {
     children: ReactNode
@@ -24,8 +27,8 @@ export type PetContextProps = {
     selectedPetId: string | null,
     handleChangePetId: (id: string) => void,
     handleCheckoutPet: (id: string) => Promise<void>,
-    handleAddPet: (newPet: Omit<Pet, 'id'>) => void,
-    handleEditPet: (id: string, newPet: Omit<Pet, 'id'>) => void,
+    handleAddPet: (newPet: PetNew) => void,
+    handleEditPet: (id: string, newPet: PetNew) => void,
     selectedPet: Pet | undefined
 }
 

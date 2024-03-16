@@ -10,7 +10,7 @@ export default function PetList() {
     const { pets, handleChangePetId, selectedPetId } = usePetContext();
     const { searchText } = useSearchContext();
 
-    const filteredPets = pets.filter((pet) => pet.name.toLowerCase().includes(searchText));
+    const filteredPets = pets.filter((pet) => pet?.name.toLowerCase().includes(searchText));
 
     return (
         <ul className="bg-white border-b border-black/[0.08] max-h-[550px] overflow-y-auto">

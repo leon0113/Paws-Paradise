@@ -5,7 +5,6 @@ import { Toaster } from "@/components/ui/sonner";
 import PetContextProvider from "@/contexts/PetContextProvider";
 import SearchContextProvider from "@/contexts/SearchContextProvider";
 import prisma from "@/lib/db";
-import { Pet } from "@/lib/type";
 import { ReactNode } from "react";
 
 export default async function layout({ children }: { children: ReactNode }) {
