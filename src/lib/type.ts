@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Pet } from "@prisma/client";
 
-export type PetNew = Omit<Pet, 'id' | 'updatedAt' | 'createdAt'>
+export type PetNew = Omit<Pet, 'id' | 'updatedAt' | 'createdAt' | 'userId'>
 
 export type PetContextProviderProps = {
     data: Pet[];
