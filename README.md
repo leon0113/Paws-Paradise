@@ -16,4 +16,3 @@
 
 
 
-dark:[^ "]+  -----> select all dark mode classes
