@@ -1,15 +1,21 @@
+
 import ContentBlock from "@/components/ContentBlock";
 import H1 from "@/components/H1";
-import { Button } from "@/components/ui/button";
+import SignOutBtn from "@/components/sign-out-btn";
+import { checkAuth } from "@/lib/server-utils";
 
-export default function Account() {
+export default async function Page() {
+    const session = await checkAuth();
+
     return (
         <main>
-            <H1 className='my-8'>My account</H1>
-            <ContentBlock className="h-[600px]  flex flex-col gap-10 items-center justify-center" >
-                <p className="">Logged in as *******</p>
-                <Button>Sign out</Button>
+            <H1 className="my-8 text-white">Your Account</H1>
+
+            <ContentBlock className="h-[500px] flex flex-col gap-3 justify-center items-center">
+                <p>Logged in as {session.user.email}</p>
+
+                <SignOutBtn />
             </ContentBlock>
         </main>
-    )
+    );
 }
