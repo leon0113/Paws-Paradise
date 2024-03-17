@@ -66,7 +66,7 @@ export default function PetForm({ actionType, onFormSubmission }: { actionType: 
                 </div>
 
                 <div className="space-y-1">
-                    <Label htmlFor="imageUrl">Image Url</Label>
+                    <Label htmlFor="imageUrl">Use Unplash image Url</Label>
                     <Input {...register('imageUrl')} id="imageUrl" />
                     {errors.imageUrl && <p className="text-red-500">{errors.imageUrl.message}</p>}
                 </div>
